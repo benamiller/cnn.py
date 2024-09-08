@@ -47,7 +47,7 @@ class Model:
 
                 forward_output = self.forward(x)
 
-                loss = self.loss.forward(x)
+                loss = self.loss.forward(forward_output, y)
 
                 output_gradient = self.loss.backward()
                 self.backward(forward_output)
