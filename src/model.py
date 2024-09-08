@@ -10,6 +10,11 @@ class Model:
         self.layers.append(layer)
 
     def set_loss(self, loss):
+        valid_losses = ['mse', 'cross_entropy']
+
+        if loss not in valid_losses:
+            return Error("LosS not valid. Ensure loss is one of: " + valid_losses)
+
         self.loss = loss
 
     def set_optimizer(self, optimizer):
@@ -29,7 +34,9 @@ class Model:
 
     def backward(self, gradients):
 
+
     def train(self, iterations):
+
 
     def predict(self, X):
         return self.forward(X)
