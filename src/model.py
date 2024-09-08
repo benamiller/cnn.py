@@ -33,7 +33,11 @@ class Model:
         return output
 
     def backward(self, gradients):
+        gradients = X
+        for layer in reversed(self.layers):
+            gradients = layer.backward(gradients)
 
+        return gradients
 
     def train(self, iterations):
 
