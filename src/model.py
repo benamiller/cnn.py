@@ -25,21 +25,36 @@ class Model:
 
         self.optimizer = optimizer
 
-    def forward(self, X):
-        output = X
+    def forward(self, x):
+        output = x
         for layer in self.layers:
             output = layer.forward(output)
 
         return output
 
     def backward(self, gradients):
-        gradients = X
+        gradients = x
         for layer in reversed(self.layers):
             gradients = layer.backward(gradients)
 
         return gradients
 
-    def train(self, iterations):
+    def train(self, X, Y, epochs, batch_size):
+        for epoch in range(epochs):
+            for i in range(0, len(x), batch_size):
+                x = X[i:i + batch_size]
+                y = X[i:i + batch_size]
+
+                forward_output = self.forward(x)
+
+                loss = self.loss.forward(x)
+
+                output_gradient = self.loss.backward()
+                self.backward(forward_output)
+
+                self.optimizer.update(self.layers)
+
+            print(f"Epoch {epoch + 1}/{epochs}, Loss: {loss}")
 
 
     def predict(self, X):
