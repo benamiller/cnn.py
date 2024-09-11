@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class Model:
     def __init__(self):
         self.layers = []
@@ -32,7 +33,7 @@ class Model:
 
         return output
 
-    def backward(self, gradients):
+    def backward(self, x):
         gradients = x
         for layer in reversed(self.layers):
             gradients = layer.backward(gradients)
@@ -41,7 +42,7 @@ class Model:
 
     def train(self, X, Y, epochs, batch_size):
         for epoch in range(epochs):
-            for i in range(0, len(x), batch_size):
+            for i in range(0, len(X), batch_size):
                 x = X[i:i + batch_size]
                 y = X[i:i + batch_size]
 
@@ -56,7 +57,5 @@ class Model:
 
             print(f"Epoch {epoch + 1}/{epochs}, Loss: {loss}")
 
-
     def predict(self, X):
         return self.forward(X)
-
