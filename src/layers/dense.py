@@ -7,3 +7,7 @@ class Dense:
         self.bias = np.random.randn(1, output_size)
         self.input = None
         self.output = None
+
+    def forward(self, X):
+        self.input = X
+        self.output = np.dot(self.weights, self.input) + self.bias
