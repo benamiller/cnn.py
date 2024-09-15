@@ -18,3 +18,8 @@ class Convolutional:
         self.output = None
 
     def forward(self, input):
+        batch_size = input.shape[0]
+        for h in range(self.output_height):
+            for w in range(self.output_width):
+                filter_shadow = input[:,:, input[h*self.stride:h*self.stride+self.filter_size], input[w*self.stride:w*self.stride:w*self.stride+self.filter_size]]
+
