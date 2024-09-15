@@ -2,7 +2,7 @@ import numpy as np
 
 
 class Convolutional:
-    def __init__(input_shape, filters, filter_size, stride=1, padding=0):
+    def __init__(self, input_shape, filters, filter_size, stride=1, padding=0):
         self.input_channels, self.input_height, self.input_width = input_shape
         self.filter_size = filter_size
         self.filters = filters
@@ -16,4 +16,7 @@ class Convolutional:
         self.bias = np.random.randn(1, filters)
         self.input = None
         self.output = None
+
+    def forward(self, input):
+
 
