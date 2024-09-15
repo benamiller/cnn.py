@@ -18,5 +18,3 @@ class Convolutional:
         self.output = None
 
     def forward(self, input):
-
-
