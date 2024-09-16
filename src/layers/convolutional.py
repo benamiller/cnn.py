@@ -23,3 +23,5 @@ class Convolutional:
             for w in range(self.output_width):
                 filter_shadow = input[:,:, input[h*self.stride:h*self.stride+self.filter_size], input[w*self.stride:w*self.stride:w*self.stride+self.filter_size]]
 
+                for f in range(self.filters):
+                    self.output[:, f, h, w] = np.sum( 
