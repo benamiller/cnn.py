@@ -24,4 +24,6 @@ class Convolutional:
                 filter_shadow = input[:,:, input[h*self.stride:h*self.stride+self.filter_size], input[w*self.stride:w*self.stride:w*self.stride+self.filter_size]]
 
                 for f in range(self.filters):
-                    self.output[:, f, h, w] = np.sum( 
+                    self.output[:, f, h, w] = np.sum(filter_shadow * self.weights[f], axis=(1, 2, 3)) + self.bias[f]
+
+        return self.output
