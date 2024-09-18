@@ -19,6 +19,7 @@ class Convolutional:
 
     def forward(self, input):
         batch_size = input.shape[0]
+        # Need to add padding before performing convolutions
         for h in range(self.output_height):
             for w in range(self.output_width):
                 filter_shadow = input[:,:, input[h*self.stride:h*self.stride+self.filter_size], input[w*self.stride:w*self.stride:w*self.stride+self.filter_size]]
@@ -29,4 +30,8 @@ class Convolutional:
         return self.output
 
     def backward(self, gradient, learning_rate):
+        
 
+
+
+        # Return the previous gradient, multiplied by our weights to get how previous layer affects our input, which in turn affects output of computation graph
