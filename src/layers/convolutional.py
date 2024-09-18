@@ -27,3 +27,6 @@ class Convolutional:
                     self.output[:, f, h, w] = np.sum(filter_shadow * self.weights[f], axis=(1, 2, 3)) + self.bias[f]
 
         return self.output
+
+    def backward(self, gradient, learning_rate):
+
