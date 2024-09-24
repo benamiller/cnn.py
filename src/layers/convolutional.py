@@ -26,6 +26,8 @@ class Convolutional:
             self.padded_input = np.pad(input, ((0, 0), (0, 0), (self.padding, self.padding), (self.padding, self.padding)), mode='constant')
         else:
             self.padded_input = input
+        
+        self.outputs = np.zeros((batch_size, self.filters, self.output_height, self.output_width))
 
         for h in range(self.output_height):
             for w in range(self.output_width):
