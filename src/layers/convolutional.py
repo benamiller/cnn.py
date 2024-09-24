@@ -31,7 +31,7 @@ class Convolutional:
 
         for h in range(self.output_height):
             for w in range(self.output_width):
-                filter_shadow = input[:,:, input[h*self.stride:h*self.stride+self.filter_size], input[w*self.stride:w*self.stride:w*self.stride+self.filter_size]]
+                filter_shadow = self.padded_input[:,:, h*self.stride:h*self.stride+self.filter_size, w*self.stride:w*self.stride:w*self.stride+self.filter_size]
 
                 for f in range(self.filters):
                     self.output[:, f, h, w] = np.sum(filter_shadow * self.weights[f], axis=(1, 2, 3)) + self.bias[f]
@@ -44,7 +44,9 @@ class Convolutional:
         weights_gradient = np.zeros_like(self.weights)
         bias_gradient = np.zeros_like(self.bias)
 
-
+        for h in range(self.output_height):
+            for w in range(self.output_width):
+                filter_shadow = self.input
         return input_gradient * self.weights
 
 
