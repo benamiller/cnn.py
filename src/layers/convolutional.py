@@ -15,12 +15,18 @@ class Convolutional:
         self.weights = np.random.randn(filters, filter_size, filter_size, self.input_channels) * 0.01
         self.bias = np.random.randn(1, filters)
         self.input = None
+        self.padded_input
         self.output = None
 
     def forward(self, input):
         self.input = input
         batch_size = input.shape[0]
-        # Need to add padding before performing convolutions
+        
+        if self.padding > 0:
+            self.padded_input = np.pad(input, ((0, 0), (0, 0), (self.padding, self.padding), (self.padding, self.padding)), mode='constant')
+        else:
+            self.padded_input = input
+
         for h in range(self.output_height):
             for w in range(self.output_width):
                 filter_shadow = input[:,:, input[h*self.stride:h*self.stride+self.filter_size], input[w*self.stride:w*self.stride:w*self.stride+self.filter_size]]
