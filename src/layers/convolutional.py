@@ -18,6 +18,7 @@ class Convolutional:
         self.output = None
 
     def forward(self, input):
+        self.input = input
         batch_size = input.shape[0]
         # Need to add padding before performing convolutions
         for h in range(self.output_height):
@@ -30,7 +31,10 @@ class Convolutional:
         return self.output
 
     def backward(self, gradient, learning_rate):
-        
+
+
+
+        return gradient * self.weights
 
 
 
