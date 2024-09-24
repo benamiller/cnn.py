@@ -39,8 +39,10 @@ class Convolutional:
         return self.output
 
     def backward(self, gradient, learning_rate):
-
-
+        batch_size = gradient.shape[0]
+        input_gradient = np.zeros_like(self.padded_input)
+        weights_gradient = np.zeros_like(self.weights)
+        bias_gradient = np.zeros_like(self.bias)
 
         return gradient * self.weights
 
