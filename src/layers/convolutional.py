@@ -44,7 +44,8 @@ class Convolutional:
         weights_gradient = np.zeros_like(self.weights)
         bias_gradient = np.zeros_like(self.bias)
 
-        return gradient * self.weights
+
+        return input_gradient * self.weights
 
 
 
