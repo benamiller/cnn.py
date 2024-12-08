@@ -1,5 +1,5 @@
 import unittest
-from src.mse import MSE
+from src.loss.mse import MSE
 
 class TestMSE(unittest.TestCase):
     def test_get_mean_squared_error(self):
